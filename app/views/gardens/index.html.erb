@@ -1,16 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <h1>Gardens</h1>
 
-<% content_for :title, "Gardens" %>
-
-<h1>Gardens</h1>
-
-<div id="gardens">
-  <% @gardens.each do |garden| %>
-    <%= render garden %>
-    <p>
-      <%= link_to "Show this garden", garden %>
-    </p>
-  <% end %>
+  <div id="gardens" class="cards">
+    <% @gardens.each do |garden| %>
+      <%= link_to garden_path(garden), class: 'text-decoration-none' do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= garden.banner_url %>)">
+          <%= garden.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New garden", new_garden_path %>
